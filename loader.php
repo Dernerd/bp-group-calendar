@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: BuddyPress Group Calendar
-Version: 1.4.9
-Plugin URI: https://premium.wpmudev.org/project/buddypress-group-calendar/
-Description: Adds event calendar functionality to BuddyPress Groups. Maintain, update and share upcoming group events with really swish calendar functionality.
-Author: WPMS N@W
+Plugin Name: BuddyPress-Gruppenkalender
+Version: 1.0.0
+Plugin URI: https://n3rds.work/piestingtal_source/buddypress-gruppenkalender-plugin/
+Description: Fügt BuddyPress-Gruppen eine Ereigniskalenderfunktion hinzu. Pflege, aktualisiere und teile anstehende Gruppenereignisse mit wirklich schicker Kalenderfunktion.
+Author: WMS N@W
 Author URI: https://n3rds.work
 Network: true
 Text Domain: groupcalendar
@@ -28,6 +28,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+require 'psource/psource-plugin-update/psource-plugin-updater.php';
+$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=bp-group-calendar', 
+	__FILE__, 
+	'bp-group-calendar' 
+);
+
 //default permissions for existing groups. Choose: full, limited, or none
 if ( ! defined( 'BGC_MODERATOR_DEFAULT' ) ) {
 	define( 'BGC_MODERATOR_DEFAULT', 'full' );
@@ -42,7 +49,7 @@ if ( ! defined( 'BGC_EMAIL_DEFAULT' ) ) {
 	define( 'BGC_EMAIL_DEFAULT', 'yes' );
 } //yes or no
 
-$bp_group_calendar_current_version = '1.4.9';
+$bp_group_calendar_current_version = '1.0.0';
 
 /* Only load code that needs BuddyPress to run once BP is loaded and initialized. */
 function bp_group_calendar_init() {
