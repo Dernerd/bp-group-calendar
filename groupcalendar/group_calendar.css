@@ -170,6 +170,6 @@ table.calendar td.pad:hover {
 
 /* BuddyPress Menu Style */
 
-.bp-nav-tabs-style-icons #nav-calendar:before {
+a#nav-calendar:before {
     content: "\f073";
 }
