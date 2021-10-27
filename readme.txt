@@ -27,8 +27,8 @@ Es gibt unbegrenzte Verwendungsmöglichkeiten für diese Funktionalität, einsch
 
 [Projektseite](https://n3rds.work/piestingtal_source/buddypress-gruppenkalender-plugin/)
 [Handbuch](https://n3rds.work/docs/buddypress-gruppenkalender-handbuch/)
-[Supportforum](https://n3rds.work/forums/forum/psource-support-foren/brainpress-supportforum/)
-[GitHub](https://github.com/piestingtal-source/brainpress)
+[Supportforum](https://n3rds.work/forums/forum/psource-support-foren/buddypress-gruppenkalender-supportforum/)
+[GitHub](https://github.com/piestingtal-source/bp-group-calendar)
 
 == Mehr PSOURCE ==
 
