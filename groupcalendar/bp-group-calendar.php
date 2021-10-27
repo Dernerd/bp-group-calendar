@@ -1086,7 +1086,7 @@ function bp_group_calendar_widget_upcoming_events() {
 
 	?>
 	<div class="bp-widget">
-		<h4><?php _e( 'Upcoming Events', 'groupcalendar' ); ?></h4>
+		<h4><?php _e( 'Kommende Veranstaltungen', 'groupcalendar' ); ?></h4>
 		<?php bp_group_calendar_list_events( $bp->groups->current_group->id, 'upcoming', '', $calendar_capabilities ); ?>
 	</div>
 	<?php
