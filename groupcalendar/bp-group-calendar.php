@@ -383,7 +383,7 @@ function bp_group_calendar_event_add_action_message( $new, $event_id, $event_dat
 	$url = bp_group_calendar_create_event_url( $event_id );
 
 	if ( $new ) {
-		$created_type     = __( 'erstellt', 'groupcalendar' );
+		$created_type     = __( 'erstellte', 'groupcalendar' );
 		$component_action = 'new_calendar_event';
 	} else {
 		$created_type     = __( 'geändert', 'groupcalendar' );
@@ -428,7 +428,7 @@ function bp_group_calendar_event_email( $new, $event_id, $event_date, $event_tit
 	$date              = bgc_date_display( $event_date, false, $event_all_day );
 	$url               = bp_group_calendar_create_event_url( $event_id );
 	$site_name         = get_blog_option( BP_ROOT_BLOG, 'blogname' );
-	$email_subject     = sprintf( __( '%s hat eine neue Veranstaltung für Deinr Gruppe %s erstellt', 'groupcalendar' ), bp_core_get_userlink( $bp->loggedin_user->id, true ), $bp->groups->current_group->name );
+	$email_subject     = sprintf( __( '%s hat eine neue Veranstaltung für Deine Gruppe %s erstellt', 'groupcalendar' ), bp_core_get_userlink( $bp->loggedin_user->id, true ), $bp->groups->current_group->name );
 	$event_description = strip_tags( stripslashes( $_POST['event-desc'] ) );
 	$location          = strip_tags( trim( stripslashes( $_POST['event-loc'] ) ) );
 
@@ -919,7 +919,7 @@ function bp_group_calendar_list_events( $group_id, $range, $date = '', $calendar
 
 			//add edit link if allowed
 			if ( $calendar_capabilities == 'full' || ( $calendar_capabilities == 'limited' && $event->user_id == $current_user->ID ) ) {
-				$events_list .= ' | <a href="' . bp_group_calendar_create_event_url( $event->id, true ) . '" title="' . __( 'Ereignis bearbeiten', 'groupcalendar' ) . '">' . __( 'Edit', 'groupcalendar' ) . ' &raquo;</a>';
+				$events_list .= ' | <a href="' . bp_group_calendar_create_event_url( $event->id, true ) . '" title="' . __( 'Ereignis bearbeiten', 'groupcalendar' ) . '">' . __( 'Bearbeiten', 'groupcalendar' ) . ' &raquo;</a>';
 			}
 
 			$events_list .= "</li>";

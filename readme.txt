@@ -34,6 +34,9 @@ Es gibt unbegrenzte Verwendungsmöglichkeiten für diese Funktionalität, einsch
 
 = Finde mehr Piestingtal.Source =
 
+Du benötigst noch mehr Möglichkeiten Termine zu erstellen, zu managen, Tickets zu verkaufen oder noch vieles mehr? 
+Dann wirf einen Blick auf [PS Events](https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/)
+
 Wirf einen Blick in unser [PSOURCE Sortiment](https://n3rds.work/psource_kategorien/psource-plugins/) und hole noch mehr aus Deinem WordPress/ClassicPress!
 
 Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswork-digalize-das-piestingtal/newsletter-management/) über unsere Piestingtal.Source informiert!
@@ -55,6 +58,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 * CSS Fix Event erstellen
 * Menüicon für BP hinzugefügt
+* Textkorrekturen
 
 = 1.0.0 = DerN3rd =
 
