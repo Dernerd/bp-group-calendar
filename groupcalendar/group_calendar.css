@@ -25,7 +25,7 @@ form#add-event-form select {
 
 table.calendar-view {
     width: 100%;
-    margin: 0 5%;
+    margin: auto;
 }
 
 table.calendar-view {
@@ -166,4 +166,10 @@ table.calendar td.pad:hover {
 
 .my_event a.event_title {
     font-size: 110%
+}
+
+/* BuddyPress Menu Style */
+
+.bp-nav-tabs-style-icons #nav-calendar:before {
+    content: "\f073";
 }

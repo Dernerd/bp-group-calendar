@@ -51,6 +51,11 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 1.0.1 = DerN3rd =
+
+* CSS Fix Event erstellen
+* Menüicon für BP hinzugefügt
+
 = 1.0.0 = DerN3rd =
 
 * Release 
