@@ -1,7 +1,7 @@
 === BuddyPress-Gruppenkalender ===
 Contributors: DerN3rd (WMS N@W)
 Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/
-Tags: multisite, suche, netzwerksuche
+Tags: events, buddypress, gruppenevents, classicpress, wordpress
 Requires at least: 4.9
 Tested up to: 4.9
 Stable tag: 1.0.0
