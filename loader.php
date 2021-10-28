@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: BuddyPress-Gruppenkalender
-Version: 1.0.1
+Version: 1.0.2
 Plugin URI: https://n3rds.work/piestingtal_source/buddypress-gruppenkalender-plugin/
 Description: Fügt BuddyPress-Gruppen eine Ereigniskalenderfunktion hinzu. Pflege, aktualisiere und teile anstehende Gruppenereignisse mit wirklich schicker Kalenderfunktion.
 Author: WMS N@W
@@ -49,7 +49,7 @@ if ( ! defined( 'BGC_EMAIL_DEFAULT' ) ) {
 	define( 'BGC_EMAIL_DEFAULT', 'yes' );
 } //yes or no
 
-$bp_group_calendar_current_version = '1.0.1';
+$bp_group_calendar_current_version = '1.0.2';
 
 /* Only load code that needs BuddyPress to run once BP is loaded and initialized. */
 function bp_group_calendar_init() {
