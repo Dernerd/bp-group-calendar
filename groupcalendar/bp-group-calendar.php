@@ -36,9 +36,15 @@ add_action( 'groups_edit_calendar_event', 'groups_update_last_activity' );
 
 
 //widgets
-add_action( 'widgets_init', create_function( '', 'return register_widget("BP_Group_Calendar_Widget");' ) );
-add_action( 'widgets_init', create_function( '', 'return register_widget("BP_Group_Calendar_Widget_Single");' ) );
-add_action( 'widgets_init', create_function( '', 'return register_widget("BP_Group_Calendar_Widget_User_Groups");' ) );
+function bp_group_calender_register_widgets() {
+	if ( !bp_is_active( 'groups' ) ) {
+		return;
+	}
+	register_widget('BP_Group_Calendar_Widget');
+	register_widget('BP_Group_Calendar_Widget_Single');
+	register_widget('BP_Group_Calendar_Widget_User_Groups');
+
+add_action( 'widgets_init', 'bp_group_calendar_register_widgets' );
 
 //------------------------------------------------------------------------//
 
@@ -115,7 +121,7 @@ if ( class_exists( 'BP_Group_Extension' ) ) {
 		var $enable_edit_item = false; // If your extension does not need an edit screen, set this to false
 
 		function __construct() {
-			global $bp;
+			$bp=buddypress();
 
 			$this->name            = __( 'Kalender', 'groupcalendar' );
 			$this->slug            = 'calendar';
@@ -127,7 +133,7 @@ if ( class_exists( 'BP_Group_Extension' ) ) {
 		}
 
 		function display( $group_id = NULL ) {
-			global $bp;
+			$bp=buddypress();
 			$event_id = bp_group_calendar_event_url_parse();
 
 			$edit_event = bp_group_calendar_event_is_edit();
@@ -371,14 +377,14 @@ function bp_group_calendar_event_save() {
 
 //register activities
 function bp_group_calendar_reg_activity() {
-	global $bp;
+	$bp=buddypress();
 	bp_activity_set_action( $bp->groups->id, 'new_calendar_event', __( 'Neue Gruppenveranstaltung', 'groupcalendar' ) );
 	bp_activity_set_action( $bp->groups->id, 'edit_calendar_event', __( 'Geänderte Gruppenveranstaltung', 'groupcalendar' ) );
 }
 
 //adds actions to the group recent actions
 function bp_group_calendar_event_add_action_message( $new, $event_id, $event_date, $event_title, $event_all_day = false ) {
-	global $bp;
+	$bp=buddypress();
 
 	$url = bp_group_calendar_create_event_url( $event_id );
 
@@ -413,7 +419,8 @@ function bp_group_calendar_event_add_action_message( $new, $event_id, $event_dat
 
 //send the email
 function bp_group_calendar_event_email( $new, $event_id, $event_date, $event_title, $event_all_day ) {
-	global $wpdb, $current_user, $bp, $bgc_email_default;
+	global $wpdb, $current_user,  $bgc_email_default;
+	$bp=buddypress();
 
 	//check if email is disabled for group
 	$email = groups_get_groupmeta( $bp->groups->current_group->id, 'group_calendar_send_email' );
@@ -483,7 +490,7 @@ Diese Gruppe anzeigen: %s
 }
 
 function bp_group_calendar_get_capabilities() {
-	global $bp;
+	$bp=buddypress();
 
 	if ( bp_group_is_admin() ) {
 		return 'full';
@@ -598,7 +605,8 @@ function bp_group_calendar_event_is_edit() {
 }
 
 function bp_group_calendar_event_is_delete() {
-	global $wpdb, $current_user, $bp;
+	global $wpdb, $current_user;
+	$bp=buddypress();
 
 	$calendar_capabilities = bp_group_calendar_get_capabilities();
 	$event_id              = bp_group_calendar_event_url_parse();
@@ -655,7 +663,7 @@ function bp_group_calendar_event_is_delete() {
 
 
 function bp_group_calendar_create_event_url( $event_id, $edit = false ) {
-	global $bp;
+	$bp=buddypress();
 
 	$url = bp_get_group_permalink( $bp->groups->current_group );
 	$url .= 'calendar/event/' . $event_id . '/';
@@ -942,7 +950,8 @@ function bp_group_calendar_list_events( $group_id, $range, $date = '', $calendar
 //widgets
 
 function bp_group_calendar_widget_day( $date ) {
-	global $bp, $bgc_locale;
+	global $bgc_locale;
+	$bp=buddypress();
 
 	$calendar_capabilities = bp_group_calendar_get_capabilities();
 
@@ -976,7 +985,8 @@ function bp_group_calendar_widget_day( $date ) {
 }
 
 function bp_group_calendar_widget_month( $date ) {
-	global $bp, $bgc_locale;
+	global  $bgc_locale;
+	$bp=buddypress();
 
 	$calendar_capabilities = bp_group_calendar_get_capabilities();
 
@@ -1031,7 +1041,8 @@ function bp_group_calendar_widget_month( $date ) {
 }
 
 function bp_group_calendar_widget_year( $date ) {
-	global $bp, $bgc_locale;
+	global $bgc_locale;
+	$bp=buddypress();
 
 	$calendar_capabilities = bp_group_calendar_get_capabilities();
 
@@ -1080,7 +1091,7 @@ function bp_group_calendar_widget_year( $date ) {
 }
 
 function bp_group_calendar_widget_upcoming_events() {
-	global $bp;
+	$bp=buddypress();
 
 	$calendar_capabilities = bp_group_calendar_get_capabilities();
 
@@ -1093,7 +1104,7 @@ function bp_group_calendar_widget_upcoming_events() {
 }
 
 function bp_group_calendar_widget_my_events() {
-	global $bp;
+	$bp=buddypress();
 
 	if ( ! is_user_logged_in() ) {
 		return;
@@ -1111,7 +1122,8 @@ function bp_group_calendar_widget_my_events() {
 
 
 function bp_group_calendar_widget_event_display( $event_id ) {
-	global $wpdb, $current_user, $bp, $bgc_locale;
+	global $wpdb, $current_user, $bgc_locale;
+	$bp=buddypress();
 
 	$group_id = $bp->groups->current_group->id;
 
@@ -1129,7 +1141,7 @@ function bp_group_calendar_widget_event_display( $event_id ) {
 		$edit_link = '<span><a href="' . bp_group_calendar_create_event_url( $event_id, true ) . '" title="' . __( 'Ereignis bearbeiten', 'groupcalendar' ) . '">' . __( 'Bearbeiten', 'groupcalendar' ) . ' &rarr;</a></span>';
 	}
 
-	$map_url = 'http://maps.google.com/maps?hl=' . $bgc_locale['code'] . '&q=' . urlencode( stripslashes( $event->event_location ) );
+	$map_url = 'https://maps.google.com/maps?hl=' . $bgc_locale['code'] . '&q=' . urlencode( stripslashes( $event->event_location ) );
 
 	$event_created_by    = bp_core_get_userlink( $event->user_id );
 	$event_created       = bgc_date_display( $event->created_stamp, get_option( 'date_format' ) . __( ' \a\t ', 'groupcalendar' ) . get_option( 'time_format' ), $event->event_all_day );
@@ -1180,7 +1192,8 @@ function bp_group_calendar_widget_event_display( $event_id ) {
 
 
 function bp_group_calendar_widget_create_event( $date ) {
-	global $bp, $bgc_locale;
+	global $bgc_locale;
+	$bp=buddypress();
 
 	$calendar_capabilities = bp_group_calendar_get_capabilities();
 
@@ -1279,7 +1292,8 @@ function bp_group_calendar_widget_create_event( $date ) {
 
 
 function bp_group_calendar_widget_edit_event( $event_id = false ) {
-	global $wpdb, $current_user, $bp, $bgc_locale;
+	global $wpdb, $current_user, $bgc_locale;
+	$bp=buddypress();
 
 	$url = bp_get_group_permalink( $bp->groups->current_group ) . 'calendar/';
 
@@ -1486,7 +1500,8 @@ class BP_Group_Calendar_Widget extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
-		global $wpdb, $current_user, $bp;
+		global $wpdb, $current_user;
+		$bp=buddypress();
 
 		extract( $args );
 
@@ -1566,7 +1581,8 @@ class BP_Group_Calendar_Widget_Single extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
-		global $wpdb, $current_user, $bp;
+		global $wpdb, $current_user;
+		$bp=buddypress();
 
 		extract( $args );
 
